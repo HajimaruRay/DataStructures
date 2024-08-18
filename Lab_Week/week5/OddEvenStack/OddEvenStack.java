@@ -1,5 +1,4 @@
 import java.util.Random;
-import java.util.ArrayList;
 
 public class OddEvenStack
 {
@@ -8,108 +7,78 @@ public class OddEvenStack
         Random rand = new Random();
         Stack StackOdd = new Stack();
         Stack StackEven = new Stack();
-        ArrayList<Integer> StackOddArrays = new ArrayList<Integer>();
-        ArrayList<Integer> StackEvenArrays = new ArrayList<Integer>();
+        Stack StackOddArrays = new Stack();
+        Stack StackEvenArrays = new Stack();
 
         try
         {
             //Rand + Input Phases
-            int RandomCount = rand.nextInt(10,20);
+            int RandomCount = rand.nextInt(10,21);
             System.out.println("---Random Number [ " + RandomCount + " ]---");
             for (int i = 0;i < RandomCount;i++)
             {
-                int RandomNumber = rand.nextInt(100);
+                int RandomNumber = rand.nextInt(101);
                 System.out.printf(RandomNumber + " ");
 
                 if (RandomNumber%2 == 0)
                 {
                     StackEven.push(RandomNumber);
-                    StackEvenArrays.add(RandomNumber);
                 }
                 else
                 {
                     StackOdd.push(RandomNumber);
-                    StackOddArrays.add(RandomNumber);
                 }
             }
             System.out.println();
 
             //PrintRand Phases
             System.out.println("---Even Stack [ " + StackEven.getSize() + " ]---");
-            for(int i = 0;i < StackEvenArrays.size();i++)
+            while (!StackEven.isEmptyStack())
             {
-                System.out.printf(StackEvenArrays.get(i) + " ");
+                int Info = (int)StackEven.pop();
+                StackEvenArrays.push(Info);
+                System.out.printf(Info + " ");
+
             }
             System.out.println();
             System.out.println("---Odd Stack [ " + StackOdd.getSize() + " ]---");
-            for(int i = 0;i < StackOddArrays.size();i++)
+            while (!StackOdd.isEmptyStack())
             {
-                System.out.printf(StackOddArrays.get(i) + " ");
+                int Info = (int)StackOdd.pop();
+                StackOddArrays.push(Info);
+                System.out.printf(Info + " ");
             }
             System.out.println();
 
             //compare phase
-            while (!StackEven.isEmptyStack() && !StackOdd.isEmptyStack())
+            while (!StackEvenArrays.isEmptyStack() && !StackOddArrays.isEmptyStack())
             {
-                int EvenPeek = (int) StackEven.peek();
-                int OddPeek = (int) StackOdd.peek();
+                int EvenPeek = (int) StackEvenArrays.peek();
+                int OddPeek = (int) StackOddArrays.peek();
 
                 if (EvenPeek < OddPeek)
                 {
-                    StackEven.pop();
+                    StackEvenArrays.pop();
                 }
                 else if (EvenPeek > OddPeek)
                 {
-                    StackOdd.pop();
+                    StackOddArrays.pop();
                 }
                 else
                 {
-                    StackEven.pop();
-                    StackOdd.pop();
+                    StackEvenArrays.pop();
+                    StackOddArrays.pop();
                 }
             }
 
-            if (StackEven.isEmptyStack())
+            //Check Winner
+            if (StackEvenArrays.isEmptyStack())
             {
                 System.out.println("===> Odd is a Winner!");
-
-                //Check Win debug
-                // System.out.println("--------------------------------");
-
-                // StackEven.push(0);
-                // System.out.println("---Even Stack [ " + StackEven.getSize() + " ]---");
-                // for(int i = 0;i < StackEvenArrays.size();i++)
-                // {
-                //     System.out.printf(StackEvenArrays.get(i) + " ");
-                // }
-                // System.out.println();
-                // System.out.println("---Odd Stack [ " + StackOdd.getSize() + " ]---");
-                // for(int i = 0;i < StackOddArrays.size();i++)
-                // {
-                //     System.out.printf(StackOddArrays.get(i) + " ");
-                // }
-                // System.out.println();
             }
             else
             {
                 System.out.println("===> Even is a Winner!");
-                
-                //Check Win debug
-                // System.out.println("--------------------------------");
-
-                // System.out.println("---Even Stack [ " + StackEven.getSize() + " ]---");
-                // for(int i = 0;i < StackEvenArrays.size();i++)
-                // {
-                //     System.out.printf(StackEvenArrays.get(i) + " ");
-                // }
-                // System.out.println();
-                // StackOdd.push(0);
-                // System.out.println("---Odd Stack [ " + StackOdd.getSize() + " ]---");
-                // for(int i = 0;i < StackOddArrays.size();i++)
-                // {
-                //     System.out.printf(StackOddArrays.get(i) + " ");
-                // }
-                // System.out.println();
             }
         }
         catch (Exception e)

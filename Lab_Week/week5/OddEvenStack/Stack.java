@@ -1,5 +1,3 @@
-import java.io.EOFException;
-
 public class Stack 
 {
     private int StackSize = 0;
@@ -38,7 +36,7 @@ public class Stack
         Object itemInfo;
         if (isEmptyStack())
         {
-            throw new EOFException("StackUnderflow");
+            throw new Exception("StackUnderflow");
         }
         itemInfo = StackTop.getInfo();
         StackTop = StackTop.getLink();
@@ -50,7 +48,7 @@ public class Stack
     {
         if (isEmptyStack())
         {
-            throw new EOFException("StackUnderflow");
+            throw new Exception("StackUnderflow");
         }
         return StackTop.getInfo();
     }
