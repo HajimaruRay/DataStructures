@@ -35,28 +35,18 @@ public class RevQ {
     public static void reverseOddQ(Queue q) {
 		try{
             Queue Default = new Queue();
-            Queue Odd = new Queue();
             Stack OddKeepForReverse = new Stack();
-            Queue OddReverse = new Queue();
+            // Copy Q to keep it in Default and if it odd copy only odd to keep in Odd Q
             while (!q.isEmptyQueue())
             {
                 Object Info = q.deQueue();
                 Default.enQueue(Info);
                 if ((int)Info % 2 != 0)
                 {
-                    Odd.enQueue(Info);
+                    OddKeepForReverse.push(Info);
                 }
             }
-            while (!Odd.isEmptyQueue())
-            {
-                Object Info = Odd.deQueue();
-                OddKeepForReverse.push(Info);
-            }
-            while (!OddKeepForReverse.isEmptyStack()) 
-            {
-                OddReverse.enQueue(OddKeepForReverse.pop());
-            }
-
+            // Examble all if Default is Even just put Default in q and if it odd put OddReverse in q
             while (!Default.isEmptyQueue())
             {
                 Object Info = Default.deQueue();
@@ -66,7 +56,7 @@ public class RevQ {
                 }
                 else
                 {
-                    q.enQueue(OddReverse.deQueue());
+                    q.enQueue(OddKeepForReverse.pop());
                 }
             }
         }catch(Exception e) {}
