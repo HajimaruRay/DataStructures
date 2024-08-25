@@ -1,16 +1,16 @@
-public class Node
+public class Node 
 {
 
-    private Object info;
+    private int info;
     private Node link;
 
-    public Node(Object info,Node link)
+    public Node(int info,Node link)
    {
        this.info=info;
        this.link=link;
     }
     
-    public Node(Object info)
+    public Node(int info)
     {
         this(info,null);
     }
@@ -20,27 +20,27 @@ public class Node
         this(0,null);
     }
 
-    public Object getInfo()
+    public int getInfo() 
     {
 	    return this.info;
     }
 
-    public Node getLink()
+    public Node getLink() 
     {
         return this.link;
     }
 
-    public void setInfo(Object info)
+    public void setInfo(int info) 
     {
 	this.info=info;
     }
 
-    public void setLink(Node link)
+    public void setLink(Node link) 
     {
         this.link = link;
     }
 
-    public String toString()
+    public String toString() 
     {
 	    return ""+this.info;
     }
