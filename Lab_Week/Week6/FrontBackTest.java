@@ -1,4 +1,4 @@
-public class main {
+public class FrontBackTest {
     public static void main(String[] args) {
         Queue Q = new Queue();
         Q.enQueue(1);

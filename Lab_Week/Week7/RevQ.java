@@ -21,6 +21,7 @@ public class RevQ {
                     q.enQueue(data);
             } while(data>=0);
         } catch(Exception e) {}
+        keyboard.close();
     } 
 
     public static void showQ(Queue q) {
